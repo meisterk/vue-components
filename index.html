@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue-Components</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <h1>Vue-Components</h1>
+    <div id="app">
+        <myheader v-bind:daten="datenheader"></myheader>
+        <p>{{ datenmain.text }}</p>
+        <myfooter v-bind:daten="datenfooter"></myfooter>
+    </div>
+    <script>
+        const myheader = {
+            template: '<h2>{{daten.text}}</h2>',
+            props: ['daten']
+        };
+
+        const myfooter = {
+            template: '<footer><p>{{daten.text}}</p></footer>',
+            props: ['daten']
+        };
+
+        const app = new Vue({
+            el: '#app',
+            data: {
+                datenheader: {
+                    text: 'Griasde'
+                },
+                datenmain: {
+                    text: 'blabla'
+                },
+                datenfooter: {
+                    text: 'Drenten herenten'
+                }
+            },
+            methods: {
+                method1: function () {
+                    return 0;
+                }
+            },
+            components: {
+                'myheader': myheader,
+                'myfooter': myfooter
+            }
+        });
+    </script>
+</body>
+
+</html>
